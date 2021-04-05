@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SammyShuck_CS360Activity</string>
+    <string name="sammy_shuck_cs360">Sammy Shuck CS360</string>
+    <string name="say_hello">Say Hello</string>
+</resources>

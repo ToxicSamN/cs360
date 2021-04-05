@@ -1,0 +1,54 @@
+<resources>
+    <style name="TextAppearance.HappyWeight.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Button" parent="TextAppearance.MaterialComponents.Button">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <!--Your custom type style here-->
+    </style>
+
+    <style name="TextAppearance.HappyWeight.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <!--Your custom type style here-->
+    </style>
+
+</resources>

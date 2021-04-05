@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Happy Weight</string>
+
+    <!-- Login -->
+    <string name="username">Email Address</string>
+    <string name="password">Password</string>
+    <string name="btnLogin">Login</string>
+    <string name="btnForgotPass">Forgot Password</string>
+
+    <!-- Registration -->
+    <string name="regFirstName">First Name</string>
+    <string name="regLastName">Last Name</string>
+    <string name="regConfirmPassword">Confirm Password</string>
+    <string name="btnRegister">Create Account</string>
+    <string name="btnBacktoLogin">Back to Login</string>
+
+    <!-- Menu -->
+    <string name="optLogout">Logout</string>
+    <string name="optSettings">Settings</string>
+    <string name="nav_drawer_open">Open Navigation Drawer</string>
+    <string name="nav_drawer_close">Close Navigation Drawer</string>
+
+    <!-- Add/Edit Weight Record -->
+    <string name="wt_add_btnAdd">Add</string>
+    <string name="wt_add_btnEdit">Edit</string>
+    <string name="wt_add_btnCancel">Cancel</string>
+    <string name="wt_add_chooseWeight">Enter your Weight</string>
+    <string name="wt_add_chooseDate">Choose a Date</string>
+
+    <!-- Grid Layout -->
+    <string name="wt_tile_lbs">lbs</string>
+
+    <!-- Deleting Record -->
+    <string name="deleting_record">Deleting Record</string>
+
+    <!-- Logging Out -->
+    <string name="logging_out">Logging Out …</string>
+
+    <!-- Weight Tracker -->
+    <string name="wt_trk_btnAddWeight">add weight</string>
+    <string name="wt_ov_set_goal">Set Goal</string>
+    <string name="btn_weight_tracker">Weight Tracker</string>
+    <string name="lbl_weight_goal">Weight Goal:</string>
+    <string name="wtgoalstub">wtGoalStub</string>
+    <string name="bottom_nav_overview">Overview</string>
+    <string name="bottom_nav_weight_tracker">Weight Tracker</string>
+    <string name="enable_sms_notification">Enable SMS for Goal Weight Reached</string>
+    <string name="hint_sms_notification">Send SMS notification when goal weight reached</string>
+
+    <!-- Weight Overview -->
+
+</resources>

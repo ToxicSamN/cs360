@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Colors-->
+    <color name="primary_200">#bb86fc</color> <!--Color primary (dark)-->
+    <color name="primary_500">#6200ee</color> <!--Color primary (light)-->
+    <color name="primary_600">#4b01d0</color> <!--Color primary variant (dark)-->
+    <color name="primary_700">#3700b3</color> <!--Color primary variant (light)-->
+
+    <color name="secondary_200">#03dac6</color> <!--Color secondary-->
+    <color name="secondary_500">#018786</color> <!--Color secondary variant-->
+
+    <color name="derr_200">#cf6679</color> <!--Color error (dark)-->
+    <color name="lerr_600">#b00020</color> <!--Color error (light)-->
+
+    <color name="lsurface_50">#ffffff</color> <!--Color surface (light)-->
+    <color name="dsurface_800">#121212</color> <!--Color surface (dark)-->
+    <color name="dsurface_900">#000000</color> <!--Color surface (dark)-->
+
+    <color name="btnpressed_grey">#7C7B7B</color>
+
+</resources>

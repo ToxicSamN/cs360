@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/weightOverviewFragment"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/bottom_nav_overview" />
+
+    <item
+        android:id="@+id/weightTrackerFragment"
+        android:icon="@drawable/ic_baseline_track_changes_24"
+        android:title="@string/bottom_nav_weight_tracker" />
+</menu>

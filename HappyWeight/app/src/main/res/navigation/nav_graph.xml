@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <!-- LoginFragment -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.happyweight.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_weightOverviewFragment"
+            app:destination="@id/weightOverviewFragment"
+            app:popUpTo="@+id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- RegistrationFragment -->
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.happyweight.RegistrationFragment"
+        android:label="Registration"
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_registrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@+id/splashScreenFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- WeightOverviewFragment -->
+    <fragment
+        android:id="@+id/weightOverviewFragment"
+        android:name="com.example.happyweight.WeightOverviewFragment"
+        android:label="Happy Wieght"
+        tools:layout="@layout/fragment_overview">
+        <action
+            android:id="@+id/action_weightOverviewFragment_to_weightTrackerFragment"
+            app:destination="@id/weightTrackerFragment" />
+    </fragment>
+
+    <!-- WeightTrackerFragment -->
+    <fragment
+        android:id="@+id/weightTrackerFragment"
+        android:name="com.example.happyweight.WeightTrackerFragment"
+        android:label="Weight Tracker"
+        tools:layout="@layout/fragment_tracker">
+        <action
+            android:id="@+id/action_weightTrackerFragment_to_weightRecordFragment"
+            app:destination="@id/weightRecordFragment" />
+        <action
+            android:id="@+id/action_weightTrackerFragment_to_deleteWeightFragment"
+            app:destination="@id/deleteWeightFragment" />
+    </fragment>
+
+    <!-- SettingsFragment -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.happyweight.SettingsFragment"
+        android:label="Profile Settings"
+        tools:layout="@layout/fragment_profile" />
+
+    <!-- LogoutFragment -->
+    <fragment
+        android:id="@+id/logoutFragment"
+        android:name="com.example.happyweight.LogoutFragment"
+        android:label="Happy Weight"
+        tools:layout="@layout/fragment_logout">
+        <action
+            android:id="@+id/action_logoutFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@+id/logoutFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Add/Edit Weight Fragment -->
+    <fragment
+        android:id="@+id/weightRecordFragment"
+        android:name="com.example.happyweight.WeightRecordFragment"
+        android:label="Happy Weight"
+        tools:layout="@layout/fragment_weight_record">
+        <action
+            android:id="@+id/action_weightRecordFragment_to_weightTrackerFragment"
+            app:destination="@id/weightTrackerFragment"
+            app:popUpTo="@id/weightTrackerFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="inputDate"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="inputWeight"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="db_record"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+    <!-- Delete Weight Fragment -->
+    <fragment
+        android:id="@+id/deleteWeightFragment"
+        android:name="com.example.happyweight.DeleteWeightFragment"
+        android:label="Happy Weight"
+        tools:layout="@layout/fragment_delete_weight">
+        <argument
+            android:name="record_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_deleteWeightFragment_to_weightTrackerFragment"
+            app:destination="@id/weightTrackerFragment"
+            app:popUpTo="@id/weightTrackerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Global Logout -->
+    <action
+        android:id="@+id/action_global_logoutFragment"
+        app:destination="@id/logoutFragment"
+        app:popUpTo="@+id/weightOverviewFragment"
+        app:popUpToInclusive="true"/>
+    <action
+        android:id="@+id/action_global_settingsFragment"
+        app:destination="@id/settingsFragment"/>
+
+
+</navigation>

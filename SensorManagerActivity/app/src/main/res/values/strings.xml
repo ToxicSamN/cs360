@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SensorManagerActivity</string>
+    <string name="rotate_the_device_to_change_sensor_values">Rotate The Device To Change Sensor Values</string>
+</resources>

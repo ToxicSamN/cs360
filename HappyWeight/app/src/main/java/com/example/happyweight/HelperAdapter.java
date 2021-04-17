@@ -24,6 +24,7 @@ public class HelperAdapter extends RecyclerView.Adapter {
 
     private int focusedItem = 0;
 
+    // constructor for the recycle view helper adapter
     public HelperAdapter(Context context, ArrayList dates, ArrayList weights, ArrayList ids){
         this.context = context;
         this.dates = dates;

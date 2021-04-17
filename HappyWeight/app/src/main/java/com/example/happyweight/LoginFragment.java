@@ -1,18 +1,15 @@
 package com.example.happyweight;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavBackStackEntry;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
-import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -22,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.happyweight.models.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
@@ -48,7 +46,6 @@ public class LoginFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         fAuth = FirebaseAuth.getInstance();
-
     }
 
     @Override
@@ -80,11 +77,14 @@ public class LoginFragment extends Fragment {
         btnRegister.setOnClickListener(this::gotoRegistration);
 
         if (fAuth.getCurrentUser() != null){
+
+            // get user data, update local db
+            updateLocalDatabase();
+
             // navigate to weight overview fragment
             navController.navigate(LoginFragmentDirections.actionLoginFragmentToWeightOverviewFragment());
         }
     }
-
 
     private void clearPreviousBackStack(){
         // sometimes  the back stack is populated twice with teh startDestination of nav_graph
@@ -138,8 +138,11 @@ public class LoginFragment extends Fragment {
             public void onSuccess(AuthResult authResult) {
                 clearFieldErrors();
                 Toast.makeText(v.getContext(), "Login Success", Toast.LENGTH_SHORT).show();
+
+                // get user data, update local db
+                updateLocalDatabase();
+
                 // navigate to weight overview
-                //navController.navigate(R.id.weightOverviewFragment);
                 navController.navigate(LoginFragmentDirections.actionLoginFragmentToWeightOverviewFragment());
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -192,5 +195,12 @@ public class LoginFragment extends Fragment {
     public void gotoRegistration(View v) {
         // navigate to registration
         navController.navigate(LoginFragmentDirections.actionLoginFragmentToRegistrationFragment());
+    }
+
+    private void updateLocalDatabase(){
+        User umodel = new User(getContext());
+        //LoginModel lmodel = new LoginModel(fAuth.getCurrentUser().getUid());
+        //lmodel.getData();
+        umodel.updateORcreateUserRecord(fAuth.getCurrentUser().getUid(), null, null);
     }
 }

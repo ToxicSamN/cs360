@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.happyweight.models.LoginModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
@@ -39,7 +40,6 @@ public class RegistrationFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -148,6 +148,14 @@ public class RegistrationFragment extends Fragment {
             public void onSuccess(AuthResult authResult) {
                 clearFieldErrors();
                 Toast.makeText(v.getContext(), "Registration Success", Toast.LENGTH_SHORT).show();
+
+                // create model and document
+                LoginModel model = new LoginModel();
+                model.setUserID(authResult.getUser().getUid());
+                model.setFirstName(first_name.getEditText().getText().toString());
+                model.setLastName(last_name.getEditText().getText().toString());
+                model.setData();
+
                 // navigate to login page
                 gotoLogin(v);
             }

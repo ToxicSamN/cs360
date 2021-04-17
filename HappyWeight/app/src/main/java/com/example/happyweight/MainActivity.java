@@ -17,27 +17,34 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.happyweight.models.LoginModel;
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.type.Color;
 
 import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
+
     private FirebaseAuth fAuth;
     private NavController navController;
 
     private Toolbar toolbar;
     private BottomNavigationView bottom_nav;
+
+    public LoginModel usrModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         this.setSupportActionBar(toolbar);
 
         bottom_nav = findViewById(R.id.bottom_nav);
+        bottom_nav.setBackgroundColor(3);
         bottom_nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -104,10 +112,14 @@ public class MainActivity extends AppCompatActivity {
         // menu item 0 = Settings
         // menu item 1 = Logout
         if (user == null){
+            // disable Settings option
+            menu.getItem(0).setEnabled(false);
             // disable Logout option
             menu.getItem(1).setEnabled(false);
         } else {
-            // Enable Logout option
+            // enable Settings option
+            menu.getItem(0).setEnabled(true);
+            // enable Logout option
             menu.getItem(1).setEnabled(true);
         }
 
@@ -123,4 +135,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

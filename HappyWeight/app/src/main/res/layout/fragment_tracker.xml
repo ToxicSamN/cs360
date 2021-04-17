@@ -30,6 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
+        app:backgroundTint="@color/secondary_200"
+        android:background="@color/secondary_200"
         android:contentDescription="@string/wt_trk_btnAddWeight"
         android:src="@drawable/ic_action_name"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -15,10 +15,6 @@ public class WeightGoal extends Database {
         super(context);
     }
 
-
-
-
-
     public WeightGoalRecord getGoalRecordById(@NonNull String _id) {
         SQLiteDatabase db = getWritableDatabase();
         WeightGoalRecord record = new WeightGoalRecord();

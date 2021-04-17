@@ -6,7 +6,7 @@
         android:id="@+id/optSettings"
         app:showAsAction="never"
         android:title="@string/optSettings"
-        android:menuCategory="secondary"/>
+        android:menuCategory="secondary" />
     <item
         android:id="@+id/optLogout"
         app:showAsAction="never"

@@ -37,16 +37,30 @@
     <string name="logging_out">Logging Out …</string>
 
     <!-- Weight Tracker -->
-    <string name="wt_trk_btnAddWeight">add weight</string>
-    <string name="wt_ov_set_goal">Set Goal</string>
     <string name="btn_weight_tracker">Weight Tracker</string>
-    <string name="lbl_weight_goal">Weight Goal:</string>
-    <string name="wtgoalstub">wtGoalStub</string>
-    <string name="bottom_nav_overview">Overview</string>
     <string name="bottom_nav_weight_tracker">Weight Tracker</string>
-    <string name="enable_sms_notification">Enable SMS for Goal Weight Reached</string>
-    <string name="hint_sms_notification">Send SMS notification when goal weight reached</string>
+    <string name="wt_trk_btnAddWeight">add weight</string>
+
 
     <!-- Weight Overview -->
+    <string name="bottom_nav_overview">Overview</string>
+    <string name="wt_ov_set_goal">Set Goal</string>
+    <string name="lbl_weight_goal">Weight Goal:</string>
+    <string name="wtgoalstub">wtGoalStub</string>
+    <string name="btnSMSChange"><u>CHANGE</u></string>
+    <string name="SMS_ON">ON</string>
+    <string name="SMS_OFF">OFF</string>
+    <string name="goal_not_set">Not Set</string>
+
+    <!-- Settings -->
+    <string name="enable_sms_notification">Enable SMS for Goal Weight Reached</string>
+    <string name="hint_sms_notification">Send SMS notification when goal weight reached</string>
+    <string name="permission_not_granted">SMS Notification permission not granted</string>
+    <string name="sms_enabled">Enabled</string>
+    <string name="sms_disabled">Disabled</string>
+    <string name="sms_notifications">SMS Notifications:</string>
+    <string name="mobile_phone_number">Mobile Phone Number</string>
+    <string name="save_settings">Save Settings</string>
+
 
 </resources>

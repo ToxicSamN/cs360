@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class Database extends SQLiteOpenHelper {
 
     public static final String DBNAME = "happyweight.db";
-    public static final int VERSION = 6;
+    public static final int VERSION = 9;
 
     public Database(@Nullable Context context) {
         super(context, DBNAME, null, VERSION);
@@ -30,6 +30,16 @@ public class Database extends SQLiteOpenHelper {
         public static final String WEIGHT = "weight";
     }
 
+    public static final class UserTableConst {
+        public static final String TABLE = "tblUserData";
+        public static final String ID = "_id";
+        public static final String USERID = "userID";
+        public static final String FNAME = "firstName";
+        public static final String LNAME = "lastName";
+        public static final String SMS = "SMSEnabled";
+        public static final String TELNO = "TelephoneNo";
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + WeightGoalTableConst.TABLE + " (" +
@@ -44,12 +54,21 @@ public class Database extends SQLiteOpenHelper {
                 WeightTrackerTableConst.DATE + " TEXT, " +
                 WeightTrackerTableConst.WEIGHT + " INTEGER" +
                 ")");
+        db.execSQL("CREATE TABLE " + UserTableConst.TABLE + " (" +
+                UserTableConst.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                UserTableConst.USERID + " TEXT UNIQUE, " +
+                UserTableConst.FNAME + " TEXT, " +
+                UserTableConst.LNAME + " TEXT, " +
+                UserTableConst.SMS + " INTEGER, " + // BOOLEAN = int 0 and int 1
+                UserTableConst.TELNO + " TEXT" +
+                ")");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + WeightTrackerTableConst.TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + WeightGoalTableConst.TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + UserTableConst.TABLE);
         onCreate(db);
     }
 

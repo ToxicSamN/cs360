@@ -1,13 +1,19 @@
 package com.example.happyweight;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.telephony.PhoneNumberUtils;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +21,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.happyweight.models.User;
+import com.example.happyweight.models.UserRecord;
+import com.example.happyweight.models.WeightGoal;
+import com.example.happyweight.models.WeightGoalRecord;
 import com.example.happyweight.models.WeightRecord;
 import com.example.happyweight.models.WeightTracker;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +47,9 @@ public class WeightRecordFragment extends Fragment {
     private FirebaseAuth fAuth;
 
     private WeightTracker model;
+    private User userModel;
+    private WeightGoal goalModel;
+    private int goal_weight;
 
     // args
     private String in_date, in_weight, db_record;
@@ -66,6 +80,15 @@ public class WeightRecordFragment extends Fragment {
 
         navController = Navigation.findNavController(view);
         model = new WeightTracker(view.getContext());
+        userModel = new User(view.getContext());
+        goalModel = new WeightGoal(view.getContext());
+        WeightGoalRecord goal_record = goalModel.getGoalRecordByUser(fAuth.getCurrentUser().getEmail());
+        if (goal_record == null) {
+            goal_weight = -1;
+        } else {
+            goal_weight = goal_record.getWeight();
+        }
+
 
         datePicker = view.findViewById(R.id.datePicker);
         if (in_date != null) {
@@ -118,8 +141,41 @@ public class WeightRecordFragment extends Fragment {
         }else {
              id = model.addWeightRecord(user_id, date, weight);
         }
+        UserRecord usrData = userModel.getUserRecordByUserId(fAuth.getCurrentUser().getUid());
+        if (weight == goal_weight && weight > 0 && goal_weight > 0) {
+            Toast.makeText(v.getContext(), "Goal Weight Reached", Toast.LENGTH_LONG).show();
+            processSMS();
+        }
 
         // navigate back to weight tracker
         navController.navigate(WeightRecordFragmentDirections.actionWeightRecordFragmentToWeightTrackerFragment());
+    }
+
+    private void processSMS(){
+        User usrModel = new User(getContext());
+        UserRecord usrData = usrModel.getUserRecordByUserId(fAuth.getCurrentUser().getUid());
+
+        String message = "Happy Weight: Congratulations you have reached your goal weight of " + goal_weight + "!!";
+        String ph = PhoneNumberUtils.normalizeNumber(usrData.getTelNo());
+
+        if (checkSMSPermissions() && usrData.getTelNo() != null && usrData.getSMS() == 1) {
+            // permission granted
+            SmsManager sms = SmsManager.getDefault();
+            sms.sendTextMessage(PhoneNumberUtils.normalizeNumber(usrData.getTelNo()), null, message, null, null);
+        }
+    }
+
+    private boolean checkSMSPermissions(){
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.SEND_SMS)) {
+            } else {
+                ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.SEND_SMS},1);
+            }
+        } else {
+            return true;
+        }
+
+        // after prompting the user for permission, check if user allowed
+        return ContextCompat.checkSelfPermission(getContext(), Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED;
     }
 }
